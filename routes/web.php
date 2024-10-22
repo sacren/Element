@@ -11,6 +11,18 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/home', function () {
+    return View::make('home');
+});
+
+Route::get('/about', function () {
+    return View::make('about');
+});
+
+Route::get('/contact', function () {
+    return View::make('contact');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

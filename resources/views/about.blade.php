@@ -3,5 +3,7 @@
     About Page
   </x-slot>
 
-  <h1>About Page</h1>
+  <x-slot name="heading">
+    About Page
+  </x-slot>
 </x-layout>

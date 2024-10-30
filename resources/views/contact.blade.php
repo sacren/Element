@@ -1,9 +1,9 @@
 <x-layout>
-  <x-slot name="title">
+  <x-slot:title>
     Contact Page
   </x-slot>
 
-  <x-slot name="heading">
+  <x-slot:heading>
     Contact Page
   </x-slot>
 </x-layout>

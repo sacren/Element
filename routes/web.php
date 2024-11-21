@@ -13,15 +13,15 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return View::make('home');
-});
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/about', function () {
     return View::make('about');
-});
+})->middleware(['auth', 'verified'])->name('about');
 
 Route::get('/contact', function () {
     return View::make('contact');
-});
+})->middleware(['auth', 'verified'])->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

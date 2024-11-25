@@ -11,8 +11,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/home', function () {
-    return View::make('home', [
+Route::get('/jobs', function () {
+    return View::make('jobs', [
         'jobs' => [
             [
                 'title' => 'Photographer',
@@ -31,7 +31,7 @@ Route::get('/home', function () {
             ],
         ],
     ]);
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware(['auth', 'verified'])->name('jobs');
 
 Route::get('/about', function () {
     return View::make('about');

@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot:title>
-        Home Page
+        Joblistings
     </x-slot">
 
     <x-slot:header>
-        Home Page
+        Joblistings
     </x-slot">
 
     <ul class="list-decimal">

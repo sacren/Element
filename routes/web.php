@@ -13,8 +13,23 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return View::make('home', [
-        'message' => 'Howdy',
-        'exclamation' => '!',
+        'jobs' => [
+            [
+                'title' => 'Photographer',
+                'salary' => '$50,000',
+                'location' => 'San Francisco, CA',
+            ],
+            [
+                'title' => 'Mason',
+                'salary' => '$25,000',
+                'location' => 'New York, NY',
+            ],
+            [
+                'title' => 'Sous Chef',
+                'salary' => '$75,000',
+                'location' => 'Seattle, WA',
+            ],
+        ],
     ]);
 })->middleware(['auth', 'verified'])->name('home');
 

@@ -11,16 +11,19 @@ Route::get('/jobs', function () {
     return View::make('jobs', [
         'jobs' => [
             [
+                'id' => 1,
                 'title' => 'Photographer',
                 'salary' => '$50,000',
                 'location' => 'San Francisco, CA',
             ],
             [
+                'id' => 2,
                 'title' => 'Mason',
                 'salary' => '$25,000',
                 'location' => 'New York, NY',
             ],
             [
+                'id' => 3,
                 'title' => 'Sous Chef',
                 'salary' => '$75,000',
                 'location' => 'Seattle, WA',

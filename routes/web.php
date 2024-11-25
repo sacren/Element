@@ -4,11 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return View::first([
-        'bogus.view',
-        'welcome',
-        'home',
-    ]);
+    return View::make('welcome');
 });
 
 Route::get('/jobs', function () {

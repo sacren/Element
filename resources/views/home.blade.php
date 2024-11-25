@@ -7,5 +7,5 @@
         Home Page
     </x-slot">
 
-    <h1>Hello, world!</h1>
+    <h1>{{ $message ?? 'Hello' }}, world{{ $exclamation }}</h1>
 </x-app-layout>

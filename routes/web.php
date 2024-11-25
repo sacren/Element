@@ -12,7 +12,10 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return View::make('home');
+    return View::make('home', [
+        'message' => 'Howdy',
+        'exclamation' => '!',
+    ]);
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/about', function () {

@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot:title>
-        Joblistings
+        Jobs
     </x-slot">
 
     <x-slot:header>
-        Joblistings
+        Job Listings
     </x-slot">
 
     <ul class="list-disc">

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Arr;
+
 class Job
 {
     /**
@@ -31,5 +33,23 @@ class Job
                 'location' => 'Seattle, WA',
             ],
         ];
+    }
+
+    /**
+     * Find the job by its ID
+     *
+     * @param the job ID, can be int or string
+     *
+     * @return array of the job
+     */
+    public static function find(int|string $id): array
+    {
+        $job = Arr::first(self::all(), fn ($job) => $job['id'] == $id);
+
+        if (! $job) {
+            abort(404);
+        }
+
+        return $job;
     }
 }

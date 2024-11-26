@@ -15,14 +15,8 @@ Route::get('/jobs', function () {
 })->middleware(['auth', 'verified'])->name('jobs');
 
 Route::get('/jobs/{id}', function ($id) {
-    $job = Arr::first(Job::all(), fn ($job) => $job['id'] == $id);
-
-    if (!$job) {
-        abort(404);
-    }
-
     return View::make('job', [
-        'job' => $job,
+        'job' => Job::find($id),
     ]);
 })->middleware(['auth', 'verified'])->name('jobs.show');
 

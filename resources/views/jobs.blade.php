@@ -13,7 +13,6 @@
             <a href="/jobs/{{ $job['id'] }}" class="hover:underline text-teal-500 font-bold">
                 {{ $job['title'] }}
             </a>
-            - Pays {{ $job['salary'] }} in {{ $job['location'] }}
         </li>
         @endforeach
     </ul>

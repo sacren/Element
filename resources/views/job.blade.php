@@ -7,5 +7,5 @@
         {{ $job['title'] }}
     </x-slot">
 
-    Pays {{ $job['salary'] }} in {{ $job['location'] }}
+    <p>The Pay is {{ $job['salary'] }} per year.</p>
 </x-app-layout>

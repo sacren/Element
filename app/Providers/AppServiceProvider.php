@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Job;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Job::preventLazyLoading();
+        Model::preventLazyLoading();
     }
 }

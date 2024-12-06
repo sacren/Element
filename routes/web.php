@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return View::make('jobs', [
-        'jobs' => Job::with('employer')->get(),
+        'jobs' => Job::with('employer')->paginate(3),
     ]);
 })->middleware(['auth', 'verified'])->name('jobs');
 

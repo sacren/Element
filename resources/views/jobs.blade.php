@@ -21,4 +21,8 @@
         </li>
         @endforeach
     </ul>
+
+    <div class="mt-6">
+        {{ $jobs->onEachSide(1)->links() }}
+    </div>
 </x-app-layout>

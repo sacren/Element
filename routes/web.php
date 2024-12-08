@@ -27,10 +27,6 @@ Route::get('/jobs/{id}', function ($id) {
     ]);
 })->middleware(['auth', 'verified'])->name('jobs.show');
 
-Route::get('/jobs/create', function () {
-    return View::make('welcome');
-})->middleware(['auth', 'verified'])->name('home');
-
 Route::get('/about', function () {
     return View::make('about');
 })->middleware(['auth', 'verified'])->name('about');

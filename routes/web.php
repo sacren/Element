@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return View::make('jobs', [
+    return View::make('jobs.index', [
         'jobs' => Job::with('employer')->paginate(3),
     ]);
 })->middleware(['auth', 'verified'])->name('jobs');
@@ -22,7 +22,7 @@ Route::get('/jobs/{id}', function ($id) {
         abort(404);
     }
 
-    return View::make('job', [
+    return View::make('jobs.show', [
         'job' => $job,
     ]);
 })->middleware(['auth', 'verified'])->name('jobs.show');

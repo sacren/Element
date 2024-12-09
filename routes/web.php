@@ -16,10 +16,6 @@ Route::get('/jobs', function () {
 })->middleware(['auth', 'verified'])->name('jobs');
 
 Route::get('/jobs/{job}', function (Job $job) {
-    if (!$job) {
-        abort(404);
-    }
-
     return View::make('jobs.show', [
         'job' => $job,
     ]);

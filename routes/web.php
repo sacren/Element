@@ -15,9 +15,7 @@ Route::get('/jobs', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('jobs');
 
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-
+Route::get('/jobs/{job}', function (Job $job) {
     if (!$job) {
         abort(404);
     }

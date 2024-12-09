@@ -5,9 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
-Route::get('/', function () {
-    return View::make('welcome');
-});
+Route::view('/', 'welcome');
 
 Route::get('/jobs', [JobController::class, 'index'])
     ->middleware(['auth', 'verified'])

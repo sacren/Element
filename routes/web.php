@@ -13,7 +13,7 @@ Route::get('/jobs', [JobController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('jobs');
 
-Route::get('/jobs/{job:id}', [JobController::class, 'show'])
+Route::get('/jobs/{job}', [JobController::class, 'show'])
     ->middleware(['auth', 'verified'])
     ->name('jobs.show');
 

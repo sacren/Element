@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -9,17 +9,13 @@ Route::get('/', function () {
     return View::make('welcome');
 });
 
-Route::get('/jobs', function () {
-    return View::make('jobs.index', [
-        'jobs' => Job::with('employer')->paginate(3),
-    ]);
-})->middleware(['auth', 'verified'])->name('jobs');
+Route::get('/jobs', [JobController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs');
 
-Route::get('/jobs/{job}', function (Job $job) {
-    return View::make('jobs.show', [
-        'job' => $job,
-    ]);
-})->middleware(['auth', 'verified'])->name('jobs.show');
+Route::get('/jobs/{job}', [JobController::class, 'show'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.show');
 
 Route::get('/about', function () {
     return View::make('about');

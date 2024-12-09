@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
 {
@@ -12,7 +13,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        return View::make('jobs.index', [
+            'jobs' => Job::with('employer')->paginate(3),
+        ]);
     }
 
     /**
@@ -36,7 +39,9 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        return View::make('jobs.show', [
+            'job' => $job,
+        ]);
     }
 
     /**

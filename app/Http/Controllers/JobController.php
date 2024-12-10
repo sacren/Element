@@ -23,7 +23,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('jobs.create');
     }
 
     /**

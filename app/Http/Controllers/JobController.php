@@ -31,7 +31,9 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Job::factory()->create();
+
+        return redirect()->route('jobs.index');
     }
 
     /**

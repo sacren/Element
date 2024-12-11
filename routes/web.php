@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/jobs', [JobController::class, 'index'])
     ->middleware(['auth', 'verified'])
-    ->name('jobs');
+    ->name('jobs.index');
 
 Route::get('/jobs/create', [JobController::class, 'create'])
     ->middleware(['auth', 'verified'])

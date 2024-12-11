@@ -7,7 +7,8 @@
         Create Job
     </x-slot:header>
 
-    <form>
+    <form method="POST" action="{{ route('jobs.store') }}">
+        @csrf
         <div class="space-y-12">
             <section class="border-b border-gray-200 pb-12">
                 <h2 class="text-lg font-medium text-gray-900">Create a new job</h2>

@@ -21,6 +21,10 @@ Route::get('/jobs/{job}', [JobController::class, 'show'])
     ->middleware(['auth', 'verified'])
     ->name('jobs.show');
 
+Route::post('/jobs', [JobController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.store');
+
 Route::get('/about', function () {
     return View::make('about');
 })->middleware(['auth', 'verified'])->name('about');

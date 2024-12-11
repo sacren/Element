@@ -21,8 +21,13 @@
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                        <div>
+                            {{ $header }}
+                        </div>
+                        <x-button-link href="{{ route('jobs.create') }}">
+                            Create Job
+                        </x-button-link>
                     </div>
                 </header>
             @endisset

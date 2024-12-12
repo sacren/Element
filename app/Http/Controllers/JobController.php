@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employer;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -31,7 +32,26 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Job::factory()->create();
+        $request->validate([
+            'title' => [
+                'required',
+                'string',
+                'unique:job_listings,title',
+                'min:3',
+                'max:255',
+            ],
+            'salary' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+        ]);
+
+        Job::create([
+            'title' => $request->title,
+            'salary' => $request->salary,
+            'employer_id' => Employer::inRandomOrder()->first()->id,
+        ]);
 
         return redirect()->route('jobs.index');
     }

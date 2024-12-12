@@ -71,7 +71,9 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        //
+        return View::make('jobs.edit', [
+            'job' => $job,
+        ]);
     }
 
     /**
@@ -79,7 +81,26 @@ class JobController extends Controller
      */
     public function update(Request $request, Job $job)
     {
-        //
+        $request->validate([
+            'title' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+            ],
+            'salary' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+        ]);
+
+        $job->update([
+            'title' => $request->title,
+            'salary' => $request->salary,
+        ]);
+
+        return redirect()->route('jobs.index');
     }
 
     /**

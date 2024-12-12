@@ -25,6 +25,14 @@ Route::post('/jobs', [JobController::class, 'store'])
     ->middleware(['auth', 'verified'])
     ->name('jobs.store');
 
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.edit');
+
+Route::patch('/jobs/{job}', [JobController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.update');
+
 Route::get('/about', function () {
     return View::make('about');
 })->middleware(['auth', 'verified'])->name('about');

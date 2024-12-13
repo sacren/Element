@@ -7,6 +7,12 @@
         Job Listings
     </x-slot">
 
+    @if (session('success'))
+        <div class="mb-4 rounded bg-red-400 p-4 text-white">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <ul class="list-none space-y-6">
         @foreach ($jobs as $job)
         <li>

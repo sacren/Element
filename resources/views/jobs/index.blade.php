@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot:title>
         Jobs
-    </x-slot">
+    </x-slot:title>
 
     <x-slot:header>
         Job Listings

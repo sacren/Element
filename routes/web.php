@@ -33,6 +33,10 @@ Route::patch('/jobs/{job}', [JobController::class, 'update'])
     ->middleware(['auth', 'verified'])
     ->name('jobs.update');
 
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.destroy');
+
 Route::get('/about', function () {
     return View::make('about');
 })->middleware(['auth', 'verified'])->name('about');

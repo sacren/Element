@@ -61,7 +61,9 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        return View::make('jobs.show', compact('job'));
+        return View::make('jobs.show', [
+            'job' => $job,
+        ]);
     }
 
     /**

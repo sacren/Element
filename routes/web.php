@@ -9,13 +9,14 @@ Route::get('/', function () {
     return View::make('welcome');
 });
 
-Route::middleware(['auth', 'verified'])
-    ->resource('jobs', JobController::class)
-    ->only(['index', 'create', 'store', 'show', 'edit', 'destroy']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('jobs', JobController::class)->only([
+        'index', 'create', 'store', 'show', 'edit', 'destroy'
+    ]);
 
-Route::patch('/jobs/{job}', [JobController::class, 'update'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.update');
+    // Explicit PATCH route for certainty, overriding the default resource behavior
+    Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+});
 
 Route::get('/about', function () {
     return View::make('about');

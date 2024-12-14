@@ -9,33 +9,15 @@ Route::get('/', function () {
     return View::make('welcome');
 });
 
-Route::get('/jobs', [JobController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.index');
-
-Route::get('/jobs/create', [JobController::class, 'create'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.create');
-
-Route::get('/jobs/{job}', [JobController::class, 'show'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.show');
-
-Route::post('/jobs', [JobController::class, 'store'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.store');
-
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.edit');
-
-Route::patch('/jobs/{job}', [JobController::class, 'update'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.update');
-
-Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
-    ->middleware(['auth', 'verified'])
-    ->name('jobs.destroy');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+    Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
+    Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+    Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
+});
 
 Route::get('/about', function () {
     return View::make('about');

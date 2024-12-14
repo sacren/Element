@@ -9,15 +9,13 @@ Route::get('/', function () {
     return View::make('welcome');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
-    Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
-    Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
-    Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
-    Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
-    Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
-    Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
-});
+Route::middleware(['auth', 'verified'])
+    ->resource('jobs', JobController::class)
+    ->only(['index', 'create', 'store', 'show', 'edit', 'destroy']);
+
+Route::patch('/jobs/{job}', [JobController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.update');
 
 Route::get('/about', function () {
     return View::make('about');

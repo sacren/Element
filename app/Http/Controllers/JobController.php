@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employer;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
@@ -50,7 +50,7 @@ class JobController extends Controller
         Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
-            'employer_id' => Employer::inRandomOrder()->first()->id,
+            'employer_id' => Auth::user()->id,
         ]);
 
         return redirect()->route('jobs.index');

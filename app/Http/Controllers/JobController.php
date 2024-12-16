@@ -50,7 +50,7 @@ class JobController extends Controller
         Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
-            'employer_id' => Auth::user()->id,
+            'employer_id' => Auth::id(),
         ]);
 
         return redirect()->route('jobs.index');

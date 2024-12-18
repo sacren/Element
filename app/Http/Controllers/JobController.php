@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
@@ -71,6 +74,8 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
+        $this->authorize('update', $job);
+
         return View::make('jobs.edit', [
             'job' => $job,
         ]);
@@ -108,6 +113,8 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
+        $this->authorize('delete', $job);
+
         $message = $job->title . ' job deleted successfully';
 
         $job->delete();

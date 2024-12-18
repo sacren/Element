@@ -29,16 +29,6 @@ class Job extends Model
     }
 
     /**
-     * Get the user that owns the Job
-     *
-     * @return BelongsTo
-     */
-    public function employerUser(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'employer_id');
-    }
-
-    /**
      * The tags that belong to the Job
      *
      * @return BelongsToMany

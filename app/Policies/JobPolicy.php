@@ -36,7 +36,7 @@ class JobPolicy
      */
     public function update(User $user, Job $job): bool
     {
-        return $user->id === $job->user->id;
+        return $user->id === $job->employerUser->id;
     }
 
     /**
@@ -44,7 +44,7 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        return $user->id === $job->user->id;
+        return $user->id === $job->employerUser->id;
     }
 
     /**

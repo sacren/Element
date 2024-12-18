@@ -33,7 +33,7 @@ class Job extends Model
      *
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function employerUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'employer_id');
     }

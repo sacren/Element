@@ -50,10 +50,16 @@ class JobController extends Controller
             ],
         ]);
 
+        $employer = Auth::user()->employers->first();
+
+        if (! $employer) {
+            abort(403);
+        }
+
         Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
-            'employer_id' => Auth::id(),
+            'employer_id' => $employer->id,
         ]);
 
         return redirect()->route('jobs.index');

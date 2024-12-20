@@ -4,7 +4,14 @@
     </x-slot:title>
 
     <x-slot:header>
-        Edit Job
+        <div class="inline-flex">
+            <div class="text-xl font-bold text-black-600">
+                Edit Job
+            </div>
+            <div class="px-2 text-xl font-bold text-red-400 bg-green-100">
+                {{ $job->title }}
+            </div>
+        </div>
     </x-slot:header>
 
     <form method="POST" action="{{ route('jobs.update', $job->id) }}">
@@ -57,7 +64,7 @@
                 <div class="mt-4 flex justify-end gap-4 sm:max-w-md">
                     <button
                         type="button"
-                        class="rounded-md bg-gray-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        class="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                         <a href="{{ route('jobs.show', $job->id) }}">
                             Cancel
                         </a>

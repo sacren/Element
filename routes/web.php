@@ -18,6 +18,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
 });
 
+Route::get('/joblistings', function () {
+    return redirect()->route('jobs.index');
+})->middleware(['auth', 'verified'])->name('joblistings');
+
 Route::get('/about', function () {
     return View::make('about');
 })->middleware(['auth', 'verified'])->name('about');

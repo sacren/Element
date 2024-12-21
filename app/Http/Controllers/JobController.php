@@ -80,7 +80,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        $this->authorize('update', $job);
+        $this->authorize('modify', $job);
 
         return View::make('jobs.edit', [
             'job' => $job,
@@ -119,7 +119,7 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        $this->authorize('delete', $job);
+        $this->authorize('modify', $job);
 
         $message = $job->title . ' job deleted successfully';
 

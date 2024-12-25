@@ -2,8 +2,13 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\JobPosted;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+
+Route::get('test', function () {
+    return new JobPosted();
+})->middleware(['auth', 'verified'])->name('test');
 
 Route::get('/', function () {
     return View::make('welcome');

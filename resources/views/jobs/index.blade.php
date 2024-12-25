@@ -5,7 +5,7 @@
 
     <x-slot:header>
         Job Listings
-    </x-slot">
+    </x-slot:header>
 
     @if (session('success'))
         <div class="mb-4 rounded bg-red-400 p-4 text-white">

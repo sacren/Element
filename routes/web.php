@@ -14,7 +14,7 @@ Route::get('test', function () {
 })->middleware(['auth', 'verified'])->name('test');
 
 Route::get('/', function () {
-    return View::make('welcome');
+    return View::make('static.welcome');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -31,15 +31,15 @@ Route::get('/joblistings', function () {
 })->middleware(['auth', 'verified'])->name('joblistings');
 
 Route::get('/about', function () {
-    return View::make('about');
+    return View::make('static.about');
 })->middleware(['auth', 'verified'])->name('about');
 
 Route::get('/contact', function () {
-    return View::make('contact');
+    return View::make('static.contact');
 })->middleware(['auth', 'verified'])->name('contact');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('static.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

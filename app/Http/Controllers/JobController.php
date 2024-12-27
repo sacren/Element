@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JobPosted;
 use App\Models\Job;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
 class JobController extends Controller
@@ -61,6 +63,8 @@ class JobController extends Controller
             'salary' => $request->salary,
             'employer_id' => $employer->id,
         ]);
+
+        Mail::to($employer->user)->send(new JobPosted());
 
         return redirect()->route('jobs.index');
     }

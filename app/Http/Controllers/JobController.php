@@ -58,13 +58,13 @@ class JobController extends Controller
             abort(403);
         }
 
-        Job::create([
+        $job = Job::create([
             'title' => $request->title,
             'salary' => $request->salary,
             'employer_id' => $employer->id,
         ]);
 
-        Mail::to($employer->user)->send(new JobPosted());
+        Mail::to($employer->user)->send(new JobPosted($job));
 
         return redirect()->route('jobs.index');
     }

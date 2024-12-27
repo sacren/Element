@@ -52,7 +52,8 @@ class JobController extends Controller
             ],
         ]);
 
-        $employer = Auth::user()->employers->first();
+        $user = Auth::user();
+        $employer = $user->employers->first();
 
         if (! $employer) {
             abort(403);
@@ -64,7 +65,7 @@ class JobController extends Controller
             'employer_id' => $employer->id,
         ]);
 
-        Mail::to($employer->user)->send(new JobPosted($job));
+        Mail::to($user)->send(new JobPosted($job));
 
         return redirect()->route('jobs.index');
     }

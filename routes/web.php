@@ -30,6 +30,10 @@ Route::get('/contact', function () {
     return View::make('static.contact');
 })->middleware(['auth', 'verified'])->name('contact');
 
+Route::get('/download', function () {
+    return response()->download(public_path('index.php'));
+})->middleware(['auth', 'verified'])->name('download');
+
 Route::get('/dashboard', function () {
     return view('static.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

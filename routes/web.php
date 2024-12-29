@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,9 @@ Route::get('/contact', function () {
     return View::make('static.contact');
 })->middleware(['auth', 'verified'])->name('contact');
 
-Route::get('/download', function () {
-    return response()->download(public_path('index.php'));
-})->middleware(['auth', 'verified'])->name('download');
+Route::get('/download', DownloadController::class)
+    ->middleware(['auth', 'verified'])
+    ->name('download');
 
 Route::get('/dashboard', function () {
     return view('static.dashboard');

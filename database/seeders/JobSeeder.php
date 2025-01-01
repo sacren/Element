@@ -13,10 +13,8 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
-        $employers = Employer::factory(10)->create();
-
         Job::factory()->count(50)->create([
-            'employer_id' => fn () => $employers->random()->id,
+            'employer_id' => fn () => Employer::all()->random()->id,
         ]);
     }
 }

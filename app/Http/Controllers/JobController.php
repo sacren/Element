@@ -41,14 +41,15 @@ class JobController extends Controller
             'title' => [
                 'required',
                 'string',
+                'regex:/^[a-zA-Z0-9\s-]+$/u',
                 'unique:job_listings,title',
                 'min:3',
                 'max:255',
             ],
             'salary' => [
                 'required',
-                'string',
-                'max:255',
+                'regex:/^\$\d{1,3}(,\d{3})*(\.\d{2})?$/',
+                'max:14',
             ],
         ]);
 
@@ -101,13 +102,14 @@ class JobController extends Controller
             'title' => [
                 'required',
                 'string',
+                'regex:/^[a-zA-Z0-9\s-]+$/u',
                 'min:3',
                 'max:255',
             ],
             'salary' => [
                 'required',
-                'string',
-                'max:255',
+                'regex:/^\$\d{1,3}(,\d{3})*(\.\d{2})?$/',
+                'max:14',
             ],
         ]);
 

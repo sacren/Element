@@ -9,18 +9,17 @@
 
     <p>The Pay is {{ $job->salary }} per year.</p>
 
-    <div class="mt-4 flex gap-4">
-        <x-button-link href="{{ route('jobs.edit', $job->id) }}">
-            Edit Job
+    <div class="mt-4 flex gap-4 text-center">
+        <x-button-link href="{{ route('jobs.edit', $job->id) }}" class="w-24">
+            {{ __('Edit') }}
         </x-button-link>
 
         <form method="POST" action="{{ route('jobs.destroy', $job->id) }}">
             @csrf
             @method('DELETE')
-            <button
-                type="submit"
-                class="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                Delete Job
+            <button type="submit"
+                class="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-24">
+                {{ __('Delete') }}
             </button>
         </form>
     </div>

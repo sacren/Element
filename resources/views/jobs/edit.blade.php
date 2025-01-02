@@ -26,16 +26,10 @@
                     <div class="sm:col-span-4">
                         <label for="title" class="block text-sm font-medium text-gray-900">Title</label>
                         <div class="mt-2">
-                            <input
-                                type="text"
-                                name="title"
-                                id="title"
+                            <input type="text" name="title" id="title"
                                 class="block w-full rounded-md shadow-sm ring-1 ring-gray-300 focus:ring-indigo-600 focus:border-indigo-600 sm:max-w-md sm:text-sm"
-                                value="{{ old('title', $job->title) }}"
-                                required
-                            />
+                                value="{{ old('title', $job->title) }}" required />
                         </div>
-
                         @error('title')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -44,16 +38,10 @@
                     <div class="sm:col-span-4">
                         <label for="salary" class="block text-sm font-medium text-gray-900">Salary</label>
                         <div class="mt-2">
-                            <input
-                                type="text"
-                                name="salary"
-                                id="salary"
+                            <input type="text" name="salary" id="salary"
                                 class="block w-full rounded-md shadow-sm ring-1 ring-gray-300 focus:ring-indigo-600 focus:border-indigo-600 sm:max-w-md sm:text-sm"
-                                value="{{ old('salary', $job->salary) }}"
-                                required
-                            />
+                                value="{{ old('salary', $job->salary) }}" required />
                         </div>
-
                         @error('salary')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -62,17 +50,15 @@
 
                 <!-- Button Section -->
                 <div class="mt-4 flex justify-end gap-4 sm:max-w-md">
-                    <button
-                        type="button"
+                    <button type="button"
                         class="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                         <a href="{{ route('jobs.show', $job->id) }}">
-                            Cancel
+                            {{ __('Cancel') }}
                         </a>
                     </button>
-                    <button
-                        type="submit"
+                    <button type="submit"
                         class="rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                        Update
+                        {{ __('Update') }}
                     </button>
                 </div>
             </section>

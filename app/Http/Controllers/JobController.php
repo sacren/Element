@@ -54,7 +54,7 @@ class JobController extends Controller
         ]);
 
         $user = Auth::user();
-        $employer = $user->employers->first();
+        $employer = $user->employers->random();
 
         if (! $employer) {
             abort(403);

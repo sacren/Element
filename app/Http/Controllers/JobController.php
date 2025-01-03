@@ -54,11 +54,12 @@ class JobController extends Controller
         ]);
 
         $user = Auth::user();
-        $employer = $user->employers->random();
 
-        if (! $employer) {
-            abort(403);
+        if ($user->employers->isEmpty()) {
+            abort(403, 'Only employers can post jobs');
         }
+
+        $employer = $user->employers->random();
 
         $job = Job::create([
             'title' => $request->title,

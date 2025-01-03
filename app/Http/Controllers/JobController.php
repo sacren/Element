@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\JobPosted;
+use App\Models\Employer;
 use App\Models\Job;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -53,12 +54,17 @@ class JobController extends Controller
             ],
         ]);
 
+        /** @var \App\Models\User $user */
         $user = Auth::user();
 
         if ($user->employers->isEmpty()) {
-            abort(403, 'Only employers can post jobs');
+            Employer::create([
+                'name' => fake()->company(),
+                'user_id' => $user->id,
+            ]);
         }
 
+        $user->load('employers');
         $employer = $user->employers->random();
 
         $job = Job::create([

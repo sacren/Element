@@ -11,6 +11,11 @@ class Employer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'user_id',
+    ];
+
     /**
      * Get the jobs owned by the employer.
      *

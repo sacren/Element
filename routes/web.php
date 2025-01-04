@@ -4,10 +4,9 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
-    return View::make('static.welcome');
+    return view('static.welcome');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -24,11 +23,11 @@ Route::get('/joblistings', function () {
 })->middleware(['auth', 'verified'])->name('joblistings');
 
 Route::get('/about', function () {
-    return View::make('static.about');
+    return view('static.about');
 })->middleware(['auth', 'verified'])->name('about');
 
 Route::get('/contact', function () {
-    return View::make('static.contact');
+    return view('static.contact');
 })->middleware(['auth', 'verified'])->name('contact');
 
 Route::get('/download', DownloadController::class)

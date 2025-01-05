@@ -17,16 +17,9 @@ class EmployerFactory extends Factory
      */
     public function definition(): array
     {
-        $users = User::all();
-
-        if ($users->isEmpty()) {
-            User::factory(6)->create();
-            $users = User::all();
-        }
-
         return [
             'name' => fake()->company(),
-            'user_id' => fn () => $users->random()->id,
+            'user_id' => User::factory(),
         ];
     }
 }

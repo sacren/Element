@@ -25,9 +25,14 @@
                         <div>
                             {{ $header }}
                         </div>
-                        <x-button-link href="{{ route('jobs.create') }}">
-                            Create Job
-                        </x-button-link>
+                        <div class="flex space-x-4">
+                            <x-button-link href="{{ route('download') }}">
+                                {{ __('Download') }}
+                            </x-button-link>
+                            <x-button-link href="{{ route('jobs.create') }}">
+                                {{ __('Create Job') }}
+                            </x-button-link>
+                        </div>
                     </div>
                 </header>
             @endisset

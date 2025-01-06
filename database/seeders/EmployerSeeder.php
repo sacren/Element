@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employer;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class EmployerSeeder extends Seeder
@@ -12,6 +13,15 @@ class EmployerSeeder extends Seeder
      */
     public function run(): void
     {
-        Employer::factory(10)->create();
+        $users = User::all();
+
+        if ($users->isEmpty()) {
+            User::factory(10)->create();
+            $users = User::all();
+        }
+
+        Employer::factory(10)->create([
+            'user_id' => fn () => $users->random()->id,
+        ]);
     }
 }

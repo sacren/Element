@@ -16,27 +16,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Explicit PATCH route for certainty, overriding the default resource behavior
     Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+
+    Route::get('/joblistings', function () {
+        return redirect()->route('jobs.index');
+    })->name('joblistings');
+
+    Route::get('/about', fn () => view('static.about'))->name('about');
+    Route::get('/contact', fn () => view('static.contact'))->name('contact');
+    Route::get('/download', DownloadController::class)->name('download');
+    Route::get('/dashboard', fn () => view('static.dashboard'))->name('dashboard');
 });
-
-Route::get('/joblistings', function () {
-    return redirect()->route('jobs.index');
-})->middleware(['auth', 'verified'])->name('joblistings');
-
-Route::get('/about', function () {
-    return view('static.about');
-})->middleware(['auth', 'verified'])->name('about');
-
-Route::get('/contact', function () {
-    return view('static.contact');
-})->middleware(['auth', 'verified'])->name('contact');
-
-Route::get('/download', DownloadController::class)
-    ->middleware(['auth', 'verified'])
-    ->name('download');
-
-Route::get('/dashboard', function () {
-    return view('static.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

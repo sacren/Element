@@ -10,12 +10,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('jobs', JobController::class)->only([
-        'index', 'create', 'store', 'show', 'edit', 'destroy'
-    ]);
-
-    // Explicit PATCH route for certainty, overriding the default resource behavior
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+    Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
     Route::patch('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+    Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
 
     Route::get('/joblistings', function () {
         return redirect()->route('jobs.index');

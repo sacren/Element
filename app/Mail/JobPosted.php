@@ -14,11 +14,16 @@ class JobPosted extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * The job instance.
+     */
+    private Job $job;
+
+    /**
      * Create a new message instance.
      */
-    public function __construct(public Job $job)
+    public function __construct(Job $job)
     {
-        //
+        $this->job = $job;
     }
 
     /**
@@ -36,8 +41,11 @@ class JobPosted extends Mailable
      */
     public function content(): Content
     {
+        $job = $this->job;
+
         return new Content(
             view: 'mail.job-posted',
+            with: compact('job'),
         );
     }
 

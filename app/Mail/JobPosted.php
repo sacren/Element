@@ -14,14 +14,9 @@ class JobPosted extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * The job instance.
-     */
-    private Job $job;
-
-    /**
      * Create a new message instance.
      */
-    public function __construct(Job $job)
+    public function __construct(private Job $job)
     {
         $this->job = $job;
     }

@@ -19,6 +19,13 @@ class Job extends Model
     ];
 
     /**
+     * Always eager load the jobs with the employer.
+     */
+    protected $with = [
+        'employer',
+    ];
+
+    /**
      * Get the employer that owns the Job
      *
      * @return BelongsTo

@@ -14,11 +14,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('job_tag', function (Blueprint $table) {
-            $table->foreignId('job_listing_id')
-                  ->constrained((new Job())->getTable())
+            $table->foreignIdFor(Job::class, 'job_listing_id')
+                  ->constrained()
                   ->cascadeOnDelete();
-            $table->foreignId('tag_id')
-                  ->constrained((new Tag())->getTable())
+            $table->foreignIdFor(Tag::class)
+                  ->constrained()
                   ->cascadeOnDelete();
             $table->timestamps();
         });

@@ -30,10 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn () => view('static.dashboard'))->name('dashboard');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware('auth')->prefix('profile')->controller(ProfileController::class)->name('profile.')->group(function () {
+    Route::get('/', 'edit')->name('edit');
+    Route::patch('/', 'update')->name('update');
+    Route::delete('/', 'destroy')->name('destroy');
 });
 
 require __DIR__.'/auth.php';
